@@ -1,15 +1,16 @@
 export default function Calendar() {
-    const date = new Date();
+    const today = new Date();
+    const firstOfMonth = new Date(today.getFullYear(), today.getMonth());
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'Dicember'];
+    
     return (
         <div>
-            <div>{date.getDay()}</div>
             <button>Prev</button>
             <button>Today</button>
             <button>Next</button>
             <table>
-                <caption>{ months[date.getMonth()] }</caption>
+                <caption>{ months[firstOfMonth.getMonth()] }</caption>
                 <thead>
                 <tr>
                     <th>S</th>
@@ -23,13 +24,14 @@ export default function Calendar() {
                 </thead>
                 <tbody>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>1</th>
+                    {
+                        // empty initial tds before first of month
+                        [...Array(firstOfMonth.getDay())].map(() => <td></td>)
+                    }
+                    {
+                        // First numbered tds
+                        [...Array(7 - firstOfMonth.getDay())].map((v, i) => <td>{i+1}</td>)
+                    }
                 </tr>
                 <tr>
                     <th>2</th>
