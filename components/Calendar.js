@@ -1,8 +1,25 @@
 export default function Calendar() {
-    const today = new Date();
-    const firstOfMonth = new Date(today.getFullYear(), today.getMonth());
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                    'July', 'August', 'September', 'October', 'November', 'Dicember'];
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = months.indexOf('April');
+    const year = 2017;
+    const today = new Date(year, month);
+    const firstOfMonth = new Date(today.getFullYear(), today.getMonth());
+    const daysOnFirstWeek = 7 - firstOfMonth.getDay();
+    let lastDay;
+    
+    if(month === 0 || month === 2 || month === 4 || month === 0 || month === 6 || month === 7 || month === 9 || month === 11) {
+        lastDay = 31;
+    } else if( month === 1) {
+        // check for leap years
+        if(year % 400 === 0 || (year % 100 !== 0) && (year % 4 === 0)) {
+            lastDay = 29;
+        } else {
+            lastDay = 28;
+        }
+    } else {
+        lastDay = 30;
+    }
     
     return (
         <div>
@@ -30,53 +47,40 @@ export default function Calendar() {
                     }
                     {
                         // First numbered tds
-                        [...Array(7 - firstOfMonth.getDay())].map((v, i) => <td>{i+1}</td>)
+                        [...Array(daysOnFirstWeek)].map((v, i) => <td>{i+1}</td>)
                     }
                 </tr>
                 <tr>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>8</th>
+                    {
+                        // second week
+                        [...Array(7)].map((v, i) => <td>{daysOnFirstWeek + 1 + i}</td>)
+                    }
                 </tr>
                 <tr>
-                    <th>9</th>
-                    <th>10</th>
-                    <th>11</th>
-                    <th>12</th>
-                    <th>13</th>
-                    <th>14</th>
-                    <th>15</th>
+                    {
+                        // third week
+                        [...Array(7)].map((v, i) => <td>{daysOnFirstWeek + 8 + i}</td>)
+                    }
                 </tr>
                 <tr>
-                    <th>16</th>
-                    <th>17</th>
-                    <th>18</th>
-                    <th>19</th>
-                    <th>20</th>
-                    <th>21</th>
-                    <th>22</th>
+                    {
+                        // fourth week
+                        [...Array(7)].map((v, i) => <td>{daysOnFirstWeek + 15 + i}</td>)
+                    }
                 </tr>
                 <tr>
-                    <th>23</th>
-                    <th>24</th>
-                    <th>25</th>
-                    <th>26</th>
-                    <th>27</th>
-                    <th>28</th>
-                    <th>29</th>
+                    {
+                        // fifth week
+                        [...Array(7)].map((v, i) => 
+                            (daysOnFirstWeek + 22 + i) <= lastDay ? <td>{daysOnFirstWeek + 22 + i}</td> : <td></td>)
+                    }
                 </tr>
                 <tr>
-                    <th>30</th>
-                    <th>31</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    {
+                        // sixth week
+                        [...Array(7)].map((v, i) => 
+                            (daysOnFirstWeek + 29 + i) <= lastDay ? <td>{daysOnFirstWeek + 29 + i}</td> : <td></td>)
+                    }
                 </tr>
                 </tbody>
             </table>
