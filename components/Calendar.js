@@ -3,9 +3,10 @@ import {v4 as uuid4} from 'uuid';
 export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay}) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
+                    
     return (
         <table>
-            <caption>{ months[firstOfMonth.getMonth()] }</caption>
+            <caption>{ months[firstOfMonth.getMonth()] + ' ' + firstOfMonth.getFullYear()}</caption>
             <thead>
             <tr>
                 <th>S</th>
