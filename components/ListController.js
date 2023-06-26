@@ -1,4 +1,4 @@
-export default function List() {
+export default function ListController() {
     return (
         <div>
         <h1>List</h1>

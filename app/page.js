@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import Calendar from '@/components/Calendar';
-import List from '@/components/List';
+import CalendarController from '@/components/CalendarController';
+import ListController from '@/components/ListController';
 
 export default function Home() {
   return (
     <main>
-      <Calendar />
-      <List />
+      <CalendarController />
+      <ListController />
     </main>
   )
 }
