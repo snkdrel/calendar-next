@@ -4,16 +4,13 @@ import Calendar from "./Calendar";
 import { useState } from "react";
 
 export default function CalendarController() {
-    //const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-    //                'July', 'August', 'September', 'October', 'November', 'December'];
-    //const month = months.indexOf('April');
-    //const year = 2017;
+
     const [currentDate, setCurrentDate] = useState(new Date()); // today
-    //const today = new Date(year, month);
     const firstOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth());
     const daysOnFirstWeek = 7 - firstOfMonth.getDay();
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
+    const today = new Date();
     let lastDay;
     
     if(month === 0 || month === 2 || month === 4 || month === 0 || month === 6 || month === 7 || month === 9 || month === 11) {
@@ -58,7 +55,15 @@ export default function CalendarController() {
             <button onClick={handlePrevClick}>Prev</button>
             <button onClick={handleTodayClick}>Today</button>
             <button onClick={handleNextClick}>Next</button>
-            <Calendar firstOfMonth={firstOfMonth} daysOnFirstWeek={daysOnFirstWeek} lastDay={lastDay} />
+            <Calendar 
+                firstOfMonth={firstOfMonth} 
+                daysOnFirstWeek={daysOnFirstWeek} 
+                lastDay={lastDay}
+                today={
+                    month === today.getMonth() && year === today.getFullYear() ? 
+                    currentDate.getDate() : -1
+                }
+            />
         </div>
     );
 }

@@ -1,9 +1,9 @@
 import {v4 as uuid4} from 'uuid';
 
-export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay}) {
+export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today}) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
-                    
+    
     return (
         <table>
             <caption>{ months[firstOfMonth.getMonth()] + ' ' + firstOfMonth.getFullYear()}</caption>
@@ -26,39 +26,52 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay}) {
                 }
                 {
                     // First numbered tds
-                    [...Array(daysOnFirstWeek)].map((v, i) => <td key={uuid4()}>{i+1}</td>)
+                    [...Array(daysOnFirstWeek)].map( (v, i) => 
+                        <td key={uuid4()} className={i+1 === today ? 'today' : 'otherDay'}>{i + 1}</td>
+                    )
                 }
             </tr>
             <tr>
                 {
                     // second week
-                    [...Array(7)].map((v, i) => <td key={uuid4()}>{daysOnFirstWeek + 1 + i}</td>)
+                    [...Array(7)].map( (v, i) => 
+                        <td key={uuid4()} className={daysOnFirstWeek+i+1 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 1 + i}</td>
+                    )
                 }
             </tr>
             <tr>
                 {
                     // third week
-                    [...Array(7)].map((v, i) => <td key={uuid4()}>{daysOnFirstWeek + 8 + i}</td>)
+                    [...Array(7)].map( (v, i) => 
+                        <td key={uuid4()} className={daysOnFirstWeek+i+8 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 8 + i}</td>
+                    )
                 }
             </tr>
             <tr>
                 {
                     // fourth week
-                    [...Array(7)].map((v, i) => <td key={uuid4()}>{daysOnFirstWeek + 15 + i}</td>)
+                    [...Array(7)].map((v, i) => 
+                        <td key={uuid4()} className={daysOnFirstWeek+i+15 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 15 + i}</td>
+                    )
                 }
             </tr>
             <tr>
                 {
                     // fifth week
                     [...Array(7)].map((v, i) => 
-                        (daysOnFirstWeek + 22 + i) <= lastDay ? <td key={uuid4()}>{daysOnFirstWeek + 22 + i}</td> : <td key={uuid4()}></td>)
+                        (daysOnFirstWeek + 22 + i) <= lastDay ? 
+                        <td key={uuid4()} className={daysOnFirstWeek+i+22 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 22 + i}</td> 
+                        : <td key={uuid4()} className={daysOnFirstWeek+i+22 === today ? 'today' : 'otherDay'}></td>
+                    )
                 }
             </tr>
             <tr>
                 {
                     // sixth week
                     [...Array(7)].map((v, i) => 
-                        (daysOnFirstWeek + 29 + i) <= lastDay ? <td key={uuid4()}>{daysOnFirstWeek + 29 + i}</td> : <td key={uuid4()}></td>)
+                        (daysOnFirstWeek + 29 + i) <= lastDay ? 
+                        <td key={uuid4()} className={daysOnFirstWeek+i+29 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 29 + i}</td> 
+                        : <td key={uuid4()} className={daysOnFirstWeek+i+29 === today ? 'today' : 'otherDay'}></td>)
                 }
             </tr>
             </tbody>
