@@ -1,7 +1,7 @@
 import {v4 as uuid4} from 'uuid';
 import Row from './Row.js';
 
-export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today, selected}) {
+export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today, selected, handleClickOnCell, currentDate}) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
     
@@ -31,7 +31,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={1} 
                     today={today} 
                     lastDay={lastDay} 
-                    selected={selected} />
+                    selected={selected} 
+                    handleClickOnCell={handleClickOnCell} 
+                    currentDate={currentDate} />
             </tr>
             {/* Second Week */}
             <tr>
@@ -40,7 +42,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={daysOnFirstWeek + 1}
                     today={today} 
                     lastDay={lastDay}
-                    selected={selected} />
+                    selected={selected}
+                    handleClickOnCell={handleClickOnCell}
+                    currentDate={currentDate} />
             </tr>
             {/* Third Week */}
             <tr>
@@ -49,7 +53,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={daysOnFirstWeek + 8}
                     today={today} 
                     lastDay={lastDay}
-                    selected={selected} />
+                    selected={selected}
+                    handleClickOnCell={handleClickOnCell}
+                    currentDate={currentDate} />
             </tr>
             {/* Fourth Week */}
             <tr>
@@ -58,7 +64,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={daysOnFirstWeek + 15}
                     today={today} 
                     lastDay={lastDay}
-                    selected={selected} />
+                    selected={selected}
+                    handleClickOnCell={handleClickOnCell}
+                    currentDate={currentDate} />
             </tr>
             {/* Fifth Week */}
             <tr>
@@ -67,7 +75,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={daysOnFirstWeek + 22}
                     today={today} 
                     lastDay={lastDay}
-                    selected={selected} />
+                    selected={selected}
+                    handleClickOnCell={handleClickOnCell}
+                    currentDate={currentDate} />
             </tr>
             {/* Sixth Week */}
             <tr>
@@ -76,7 +86,9 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     startingDay={daysOnFirstWeek + 29}
                     today={today} 
                     lastDay={lastDay}
-                    selected={selected} />
+                    selected={selected}
+                    handleClickOnCell={handleClickOnCell}
+                    currentDate={currentDate} />
             </tr>
             </tbody>
         </table>
