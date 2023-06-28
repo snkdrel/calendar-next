@@ -1,6 +1,7 @@
 import {v4 as uuid4} from 'uuid';
+import Row from './Row.js';
 
-export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today}) {
+export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today, selected}) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
     
@@ -19,60 +20,63 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today}
             </tr>
             </thead>
             <tbody>
+            {/* First Week */}
             <tr>
                 {
                     // empty initial tds before first of month
                     [...Array(firstOfMonth.getDay())].map(() => <td key={uuid4()}></td>)
                 }
-                {
-                    // First numbered tds
-                    [...Array(daysOnFirstWeek)].map( (v, i) => 
-                        <td key={uuid4()} className={i+1 === today ? 'today' : 'otherDay'}>{i + 1}</td>
-                    )
-                }
+                <Row 
+                    size={daysOnFirstWeek} 
+                    startingDay={1} 
+                    today={today} 
+                    lastDay={lastDay} 
+                    selected={selected} />
             </tr>
+            {/* Second Week */}
             <tr>
-                {
-                    // second week
-                    [...Array(7)].map( (v, i) => 
-                        <td key={uuid4()} className={daysOnFirstWeek+i+1 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 1 + i}</td>
-                    )
-                }
+                <Row 
+                    size={7}
+                    startingDay={daysOnFirstWeek + 1}
+                    today={today} 
+                    lastDay={lastDay}
+                    selected={selected} />
             </tr>
+            {/* Third Week */}
             <tr>
-                {
-                    // third week
-                    [...Array(7)].map( (v, i) => 
-                        <td key={uuid4()} className={daysOnFirstWeek+i+8 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 8 + i}</td>
-                    )
-                }
+                <Row 
+                    size={7}
+                    startingDay={daysOnFirstWeek + 8}
+                    today={today} 
+                    lastDay={lastDay}
+                    selected={selected} />
             </tr>
+            {/* Fourth Week */}
             <tr>
-                {
-                    // fourth week
-                    [...Array(7)].map((v, i) => 
-                        <td key={uuid4()} className={daysOnFirstWeek+i+15 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 15 + i}</td>
-                    )
-                }
+                <Row 
+                    size={7}
+                    startingDay={daysOnFirstWeek + 15}
+                    today={today} 
+                    lastDay={lastDay}
+                    selected={selected} />
             </tr>
+            {/* Fifth Week */}
             <tr>
-                {
-                    // fifth week
-                    [...Array(7)].map((v, i) => 
-                        (daysOnFirstWeek + 22 + i) <= lastDay ? 
-                        <td key={uuid4()} className={daysOnFirstWeek+i+22 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 22 + i}</td> 
-                        : <td key={uuid4()} className={daysOnFirstWeek+i+22 === today ? 'today' : 'otherDay'}></td>
-                    )
-                }
+                <Row 
+                    size={7}
+                    startingDay={daysOnFirstWeek + 22}
+                    today={today} 
+                    lastDay={lastDay}
+                    selected={selected} />
             </tr>
+            {/* Sixth Week */}
             <tr>
-                {
-                    // sixth week
-                    [...Array(7)].map((v, i) => 
-                        (daysOnFirstWeek + 29 + i) <= lastDay ? 
-                        <td key={uuid4()} className={daysOnFirstWeek+i+29 === today ? 'today' : 'otherDay'}>{daysOnFirstWeek + 29 + i}</td> 
-                        : <td key={uuid4()} className={daysOnFirstWeek+i+29 === today ? 'today' : 'otherDay'}></td>)
-                }
+                <Row 
+                    size={7}
+                    startingDay={daysOnFirstWeek + 29}
+                    today={today} 
+                    lastDay={lastDay}
+                    selected={selected} />
             </tr>
             </tbody>
         </table>

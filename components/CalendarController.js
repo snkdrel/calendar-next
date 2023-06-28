@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function CalendarController() {
 
     const [currentDate, setCurrentDate] = useState(new Date()); // today
+    const [selectedDay, setSelectedDay] = useState(new Date());
     const firstOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth());
     const daysOnFirstWeek = 7 - firstOfMonth.getDay();
     const month = currentDate.getMonth();
@@ -63,6 +64,7 @@ export default function CalendarController() {
                     month === today.getMonth() && year === today.getFullYear() ? 
                     currentDate.getDate() : -1
                 }
+                selected={selectedDay}
             />
         </div>
     );
