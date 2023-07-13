@@ -1,6 +1,6 @@
 import {v4 as uuid4} from 'uuid';
 
-export default function Row ({size, startingDay, today, lastDay, selected, handleClickOnCell, currentDate}) {
+export default function Row ({size, startingDay, today, lastDay, selected, onClickCell, currentDate}) {
     return (
         [...Array(size)].map( (v, i) => 
             ( i + startingDay ) <= lastDay ?
@@ -11,7 +11,7 @@ export default function Row ({size, startingDay, today, lastDay, selected, handl
                         (selected.getMonth() === currentDate.getMonth()) && 
                         (selected.getYear() === currentDate.getYear()) ? ' selected' : '')
                     }
-                    onClick={ () => handleClickOnCell(i + startingDay) }
+                    onClick={ () => onClickCell(i + startingDay) }
                 >
                     { i + startingDay }
                 </td>

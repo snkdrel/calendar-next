@@ -1,7 +1,7 @@
 export default function Form({ onClickCancel, clickSubmit }) {
     return (
         <dialog open>
-            <form action="#" method="dialog">
+            <form onSubmit={clickSubmit}>
                 <legend>Add an event</legend>
 
                 <label htmlFor="name">Name: </label>
@@ -20,7 +20,7 @@ export default function Form({ onClickCancel, clickSubmit }) {
                 <input type="text" id="locacion" name="location"></input>
 
                 <button type="button" onClick={onClickCancel}>Cancel</button>
-                <button type="submit" onClick={clickSubmit}>Accept</button>
+                <button type="submit">Accept</button>
             </form>
         </dialog>
     );

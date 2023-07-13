@@ -2,14 +2,16 @@
 import { useState } from "react";
 import Form from "./Form";
 
-export default function ListController({ clickSubmit }) {
+export default function ListController({ selectedDay }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
 
   function handleClickCancel () {
     setIsDialogOpened(false);
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('submitted: ');
     setIsDialogOpened(false);
   }
 

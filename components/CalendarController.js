@@ -3,10 +3,9 @@
 import Calendar from "./Calendar";
 import { useState } from "react";
 
-export default function CalendarController() {
+export default function CalendarController({ onClickCell, selectedDay }) {
 
     const [currentDate, setCurrentDate] = useState( new Date() ); // today
-    const [selectedDay, setSelectedDay] = useState( new Date() );
     const firstOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth());
     const daysOnFirstWeek = 7 - firstOfMonth.getDay();
     const month = currentDate.getMonth();
@@ -51,8 +50,8 @@ export default function CalendarController() {
         setCurrentDate( new Date() );
     }
 
-    function handleClickOnCell(day) {
-        setSelectedDay( new Date(year, month, day) );
+    function passSelectedDate(day) {
+        onClickCell(new Date(year, month, day));
     }
 
     return (
@@ -69,7 +68,7 @@ export default function CalendarController() {
                     today.getDate() : -1
                 }
                 selected={selectedDay}
-                handleClickOnCell={handleClickOnCell}
+                onClickCell={passSelectedDate}
                 currentDate={currentDate}
             />
         </div>
