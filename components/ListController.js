@@ -1,9 +1,11 @@
 'use client';
+import {v4 as uuid4} from 'uuid';
 import { useState } from "react";
 import Form from "./Form";
 
 export default function ListController({ selectedDay }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
+  const [eventList, setEventList] = useState(new Array());
 
   function handleClickCancel () {
     setIsDialogOpened(false);
@@ -11,22 +13,29 @@ export default function ListController({ selectedDay }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted: ');
-    console.log(selectedDay);
-    console.log(e.target.name.value);
-    console.log(e.target.description.value);
-    console.log(e.target.start.value);
-    console.log(e.target.end.value);
-    console.log(e.target.location.value);
+    setEventList(new Array(
+      ...eventList, 
+      {
+        date: selectedDay,
+        name: e.target.name.value,
+        description: e.target.description.value,
+        start: e.target.start.value,
+        end: e.target.end.value,
+        location: e.target.location.value
+      }
+    ));
     setIsDialogOpened(false);
   }
-
+  
   return (
       <div>
       <h1>List</h1>
       <ul>
-        <li>Go to library.</li>
-        <li>Dinner with Bob.</li>
+        {
+          eventList
+            .filter(i => i.date.day === selectedDay.day && i.date.month === selectedDay.month && i.date.year === selectedDay.year)
+            .map(i => <li key={uuid4()}>{i.date + i.name + i.description + i.start + i.end + i.location}</li>)
+        }
       </ul>
       <button onClick={ () => setIsDialogOpened(true) }> + </button>
       {isDialogOpened ? <Form onClickCancel={handleClickCancel} clickSubmit={handleSubmit}/> : <></>}
