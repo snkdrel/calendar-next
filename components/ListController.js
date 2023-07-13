@@ -12,6 +12,12 @@ export default function ListController({ selectedDay }) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('submitted: ');
+    console.log(selectedDay);
+    console.log(e.target.name.value);
+    console.log(e.target.description.value);
+    console.log(e.target.start.value);
+    console.log(e.target.end.value);
+    console.log(e.target.location.value);
     setIsDialogOpened(false);
   }
 
