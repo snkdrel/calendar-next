@@ -66,7 +66,7 @@ export default function CalendarController() {
                 lastDay={lastDay}
                 today={
                     month === today.getMonth() && year === today.getFullYear() ? 
-                    currentDate.getDate() : -1
+                    today.getDate() : -1
                 }
                 selected={selectedDay}
                 handleClickOnCell={handleClickOnCell}

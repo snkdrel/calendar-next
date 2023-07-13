@@ -1,26 +1,26 @@
-export default function Form() {
+export default function Form({ onClickCancel, clickSubmit }) {
     return (
         <dialog open>
             <form action="#" method="dialog">
                 <legend>Add an event</legend>
 
-                <label for="name">Name: </label>
+                <label htmlFor="name">Name: </label>
                 <input type="text" id="name" name="name"></input>
 
-                <label for="description">Description: </label>
+                <label htmlFor="description">Description: </label>
                 <input type="text" id="description" name="description"></input>
 
-                <label for="start">Start: </label>
+                <label htmlFor="start">Start: </label>
                 <input type="time" id="start" name="start"></input>
 
-                <label for="end">End: </label>
+                <label htmlFor="end">End: </label>
                 <input type="time" id="end" name="end"></input>
 
-                <label for="location">Location: </label>
+                <label htmlFor="location">Location: </label>
                 <input type="text" id="locacion" name="location"></input>
 
-                <button type="button">Cancel</button>
-                <button type="submit">Accept</button>
+                <button type="button" onClick={onClickCancel}>Cancel</button>
+                <button type="submit" onClick={clickSubmit}>Accept</button>
             </form>
         </dialog>
     );
