@@ -33,8 +33,12 @@ export default function ListController({ selectedDay }) {
       <ul>
         {
           eventList
-            .filter(i => i.date.day === selectedDay.day && i.date.month === selectedDay.month && i.date.year === selectedDay.year)
-            .map(i => <li key={uuid4()}>{i.date + i.name + i.description + i.start + i.end + i.location}</li>)
+            .filter(i => i.date.getDate() === selectedDay.getDate() 
+              && i.date.getMonth() === selectedDay.getMonth() 
+              && i.date.getFullYear() === selectedDay.getFullYear())
+            .map(i => <li key={uuid4()}>{
+              i.date + i.name + i.description + i.start + i.end + i.location
+              }</li>)
         }
       </ul>
       <button onClick={ () => setIsDialogOpened(true) }> + </button>
