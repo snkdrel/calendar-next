@@ -50,7 +50,7 @@ export default function ListController({ selectedDay }) {
                 && i.month === selectedDay.getMonth() 
                 && i.year === selectedDay.getFullYear())
               .map(i => <li key={uuid4()}>{
-                i.day + i.month + i.year + i.name + i.description + i.start + i.end + i.location
+                i.day + '/' + (i.month + 1) + '/' + i.year + ': ' + i.name + ' - ' + i.description + '. From ' + i.start + ' to ' + i.end + ' in ' + i.location
                 }</li>)
           }
         </ul>
