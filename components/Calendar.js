@@ -6,8 +6,8 @@ export default function Calendar({firstOfMonth, daysOnFirstWeek, lastDay, today,
                     'July', 'August', 'September', 'October', 'November', 'December'];
     
     return (
-        <table>
-            <caption>{ months[firstOfMonth.getMonth()] + ' ' + firstOfMonth.getFullYear()}</caption>
+        <table className='table-auto'>
+            <caption className='text-xl'>{ months[firstOfMonth.getMonth()] + ' ' + firstOfMonth.getFullYear()}</caption>
             <thead>
             <tr>
                 <th>S</th>

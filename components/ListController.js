@@ -41,21 +41,21 @@ export default function ListController({ selectedDay }) {
   }
   
   return (
-      <div>
-      <h1>List</h1>
-      <ul>
-        {
-          eventList
-            .filter(i => i.day === selectedDay.getDate() 
-              && i.month === selectedDay.getMonth() 
-              && i.year === selectedDay.getFullYear())
-            .map(i => <li key={uuid4()}>{
-              i.day + i.month + i.year + i.name + i.description + i.start + i.end + i.location
-              }</li>)
-        }
-      </ul>
-      <button onClick={ () => setIsDialogOpened(true) }> + </button>
-      {isDialogOpened ? <Form onClickCancel={handleClickCancel} clickSubmit={handleSubmit}/> : <></>}
+      <div className='w-1/2 m-10'>
+        <h1>List</h1>
+        <ul>
+          {
+            eventList
+              .filter(i => i.day === selectedDay.getDate() 
+                && i.month === selectedDay.getMonth() 
+                && i.year === selectedDay.getFullYear())
+              .map(i => <li key={uuid4()}>{
+                i.day + i.month + i.year + i.name + i.description + i.start + i.end + i.location
+                }</li>)
+          }
+        </ul>
+        <button onClick={ () => setIsDialogOpened(true) }> Add event </button>
+        {isDialogOpened ? <Form onClickCancel={handleClickCancel} clickSubmit={handleSubmit}/> : <></>}
       </div>
   );
 }

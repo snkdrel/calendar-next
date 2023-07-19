@@ -1,7 +1,51 @@
+@tailwind base;
+@tailwind component;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-200;
+}
+
+button {
+    @apply rounded-full bg-cyan-400 px-3 py-1 m-2 place-content-center hover:bg-cyan-300 active:bg-cyan-500;
+}
+
+th, td {
+    @apply text-right p-2;
+}
+
+.otherDay {
+    @apply hover:bg-gray-300;
+}
+
+h1 {
+    @apply text-2xl;
+}
+
 .today {
-    background-color: grey;
+    @apply bg-blue-400;
 }
 
 .selected {
-    background-color: orange;
+    @apply bg-blue-300;
+}
+
+dialog {
+    @apply open:w-1/2 border-2 border-black bg-gray-100 text-lg;
+}
+
+legend {
+    @apply text-xl font-semibold;
+}
+
+form {
+    @apply flex flex-col;
+}
+
+label {
+    @apply m-1;
+}
+
+input {
+    @apply m-1 bg-gray-200 ml-2;
 }

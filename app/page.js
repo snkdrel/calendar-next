@@ -12,7 +12,7 @@ export default function Home() {
   }
   
   return (
-    <main>
+    <main className='w-full flex'>
       <CalendarController onClickCell={handleClickOnCell} selectedDay={selectedDay}/>
       <ListController selectedDay={selectedDay}/>
     </main>

@@ -55,7 +55,7 @@ export default function CalendarController({ onClickCell, selectedDay }) {
     }
 
     return (
-        <div>
+        <div className="w-1/2 m-10">
             <button onClick={handlePrevClick}>Prev</button>
             <button onClick={handleTodayClick}>Today</button>
             <button onClick={handleNextClick}>Next</button>
